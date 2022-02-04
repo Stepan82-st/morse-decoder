@@ -38,7 +38,31 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    let result = [];
+    const ex = expr.trim();
+    const matrixLeter = ex.split('');
+    
+    for(let i=0; i < matrixLeter.length; i++)
+    for (const [key, value] of Object.entries(MORSE_TABLE)){
+    if(value === matrixLeter[i])
+      result.push((`${key}`));
+    }
+    const res = [];
+    res.push(result.map(function(el) {
+    return el.replace(/./g, v => /-/i.test(v)?11:10)
+    }))
+    
+    
+    function add(ar){ 
+    const arr = [];
+    for(let y = 0; y < ar.length; y++)
+     arr.push('0'.repeat(10 - ar[y].length)+ar[y]); 
+    return arr;
+    }
+    let teg = [];
+    teg.push(res.map(el => add(el)))
+      
+    return teg.join(' ');  // write your solution here
 }
 
 module.exports = {
