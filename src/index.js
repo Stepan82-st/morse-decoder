@@ -39,8 +39,8 @@ const MORSE_TABLE = {
 
 function decode(expr) {
     let result = [];
-    const ex = expr.trim();
-    const matrixLeter = ex.split('');
+    expr = expr.replace(/\s/g, '');
+    const matrixLeter = expr.split('');
     
     for(let i=0; i < matrixLeter.length; i++)
     for (const [key, value] of Object.entries(MORSE_TABLE)){
@@ -62,7 +62,7 @@ function decode(expr) {
     let teg = [];
     teg.push(res.map(el => add(el)))
       
-    return teg.join(' ');  // write your solution here
+    return teg.join('').replace(/,/g, '');  // write your solution here
 }
 
 module.exports = {
